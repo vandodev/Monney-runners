@@ -6,6 +6,8 @@ import moment from "moment";
 
 import aws from "../services/aws.js";
 
+import User from "../models/user.js";
+
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -38,6 +40,18 @@ router.post("/", async (req, res) => {
           return false;
         }
       }
+
+      // CRIAR SENHA COM BCRYPT
+      const password = await bcrypt.hash(req.body.password, 10);
+
+      const user = await new User({
+        ...req.body,
+        _id: userId,
+        password,
+        photo,
+      }).save();
+
+      res.json({ user });
     } catch (err) {
       res.json({ error: true, message: err.message });
     }
