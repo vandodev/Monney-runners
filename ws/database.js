@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
-const URI =
-  "mongodb+srv://runners:<password>@prod.bgljz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const URI = "";
 
 let options = {};
 

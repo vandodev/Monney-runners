@@ -59,4 +59,35 @@ router.post("/", async (req, res) => {
   req.pipe(busboy);
 });
 
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({
+      email,
+      status: "A",
+    });
+
+    if (!user) {
+      res.json({ error: true, message: "Nenhum e-mail ativo encontrado." });
+      return false;
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      res.json({
+        error: true,
+        message: "Combinação errada de E-mail / Senha.",
+      });
+      return false;
+    }
+    delete user.password;
+    res.json({
+      user,
+    });
+  } catch (err) {
+    res.json({ error: true, message: err.message });
+  }
+});
+
 export default router;
