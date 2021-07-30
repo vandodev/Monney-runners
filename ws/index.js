@@ -6,6 +6,7 @@ import busboy from "connect-busboy";
 import busboyBodyParser from "busboy-body-parser";
 
 import userRoutes from "./src/routes/user.routes.js";
+import "./database.js";
 
 const app = express();
 
