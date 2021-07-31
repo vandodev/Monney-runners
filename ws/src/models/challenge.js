@@ -45,7 +45,7 @@ const Challenge = new Schema({
   status: {
     type: String,
     enum: ["A", "I", "F"], // ACTIVE, INACTIVE, FINISHED
-    default: "A",
+    default: "P",
   },
   register: {
     type: Date,
