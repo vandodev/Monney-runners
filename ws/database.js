@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-
-const URI = "";
+import { URI } from "./src/data/keys.js";
 
 let options = {};
 

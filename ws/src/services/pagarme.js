@@ -1,7 +1,5 @@
 import axios from "axios";
-// import { api_key } from "../data/keys.js";
-
-const api_key = "";
+import { api_key } from "../data/keys.js";
 
 const api = axios.create({
   baseURL: "https://api.pagar.me/1",
